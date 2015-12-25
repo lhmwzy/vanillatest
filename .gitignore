@@ -1,10 +1,4 @@
 # Vanilla
-client_body_temp
-fastcgi_temp
-logs
-proxy_temp
-tmp
-uwsgi_temp
 
 # Compiled Lua sources
 luac.out
