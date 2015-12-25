@@ -31,7 +31,7 @@
 │       ├── index
 │       │   ├── Hello.html
 │       │   └── index.html
-│       └── tel         #存在视图文件，
+│       └── tel         #框架视图文件，
 │           ├── add.html #添加号码
 │           ├── index.html #首页
 │           └── mod.html #修改号码
@@ -88,10 +88,23 @@
 使用方法：
 1、安装vanilla,安装方法见https://github.com/idevz/vanilla/blob/master/README-zh.md
 2、在mysql中建立一个名为tel的表，将sql目录下的文件导入其中,其中department表，请在mysql中手动添加数据
-3、将所有的文件放在一个目录中，在该目录下用vanilla start启动服务。
-4、通过 http://ip:端口/tel/ 来访问
+3、通过vanilla new 应用名称 #新建一个应用
+   cd 应用名称 #进入到应用目录
+   mkdir application/controllers/tel #建立目录
+   把init.lua放在该目录下
+   把tel.lua放在application/models/service目录下
+   把auth.lua放在application/plugins目录下
+
+   mdkir application/views/tel #建立目录
+   把add.html index.html mod.html放在该目录下
+
+   按照conf/nginx.conf的内容修改nginx配置文件
+
+   mkdir pub/static/tel  #建立目录
+   把css.css、images目录和js目录放在该目录下
+4、通过vanilla start来启动应用 
+5、通过 http://ip:端口/tel/ 来访问
    http://ip:端口/tel/mod  是修改数据
    http://ip:端口/tel/add  是添加数据
-
-5、代码很简陋和粗糙，仅做为vanilla入门示例，不当之处，请批评指正。
+6、代码很简陋和粗糙，仅做为vanilla入门示例，不当之处，请批评指正。
 
