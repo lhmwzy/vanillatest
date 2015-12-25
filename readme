@@ -79,8 +79,6 @@
 │   ├── models
 │   └── spec_helper.lua
 ├── tmp
-│   ├── production-nginx.conf
-│   └── production-nginx.pid
 ├── sql
     ├── person.sql  #存放电话号码的表
 │   └── department.sql #存在部门的表
