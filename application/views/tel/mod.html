@@ -1,0 +1,76 @@
+<html>
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+	<title> 修改电话 </title> 
+	<link href="css.css" type=text/css rel=stylesheet>
+	<script language="javascript" src="/static/tel/js/jquery.js"></script>
+	<script language="javascript" src="/static/tel/js/autocompletejq.js"></script>
+	</head>
+<body>
+	<form action="" id="form" name="form">
+		修改电话<br>
+		输入姓名:<input name="name" id="name" type="text"><br>
+		<div id="content"></div>	
+		<br><input id="get" type="submit" value="提取数据"><input id="save" type="button" value="保存">
+		<div id="err"></div>
+	</form>
+	<script type="text/javascript">
+		$("#depname").change(function(){
+			var q=$("#depname").val();
+			$('#depnames').html("<img src='/static/tel/images/loading.gif'> 正在读取。。。");
+			$('#depnames').load("/tel/getdep",{query:q});
+			}
+		);
+		$(function() {
+			$("#save").click(function() {
+				var errstr='';
+				if($("#name").val()=="" || $("#name").val()==null) {
+					errstr="<font color='red'>姓名不能为空！</font>";
+				 	$("#err").html(errstr);
+					return false;
+				}
+				if($("#namepy").val()=="" || $("#namepy").val()==null) {
+					errstr="<font color='red'>姓名拼音缩写不能为空！</font>";
+				 	$("#err").html(errstr);
+					return false;
+				}
+				if($("#depselect").val()=="" || $("#depselect").val()==null) {
+					errstr="<font color='red'>请选择所属部门！</font>";
+				 	$("#err").html(errstr);
+					return false;
+				}
+				if($("#officetel").val()=="" || $("#officetel").val()==null) {
+					errstr="<font color='red'>请输入办公电话！</font>";
+				 	$("#err").html(errstr);
+					return false;
+				}
+				var formdata=$("#form").serialize()
+				$.ajax ({
+					type:'post',
+					url:'/tel/domod',
+					data:formdata,
+					chache:false,
+					success:function(data){
+						$("#err").html(data);
+					}
+				});
+			});
+		});
+		$(function() {
+			$("#get").click(function(event) {
+				event.preventDefault();
+				var errstr='';
+				if($("#name").val()=="" || $("#name").val()==null) {
+					errstr="<font color='red'>姓名不能为空！</font>";
+				 	$("#err").html(errstr);
+					return false;
+				}
+			var name=$("#name").val();
+			$('#content').html("<img src='/static/tel/images/loading.gif'> 正在读取。。。");
+			$("#err").html('');
+			$('#content').load("/tel/getcontent",{name:name});
+			});
+		});
+	</script>
+</body>
+</html>

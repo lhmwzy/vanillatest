@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+	<HEAD>
+		<TITLE>搜索</TITLE>
+		<META content="text/html; charset=utf-8" http-equiv=Content-Type><LINK rel=stylesheet type=text/css href="/static/tel/css.css">
+		<script language="javascript" src="/static/tel/js/jquery.js"></script>
+		<script language="javascript" src="/static/tel/js/autocompletejq.js"></script>
+		<script language="javascript" src="/static/tel/js/input.js"></script>
+<BODY>
+<DIV class=MHome>
+	<!--<DIV class=logo><A href=""></A></DIV>-->
+			<center>请输入姓名、号码、职位、单位、姓名拼音首字母，进行查询</center>
+	<DIV class=searchHome>
+		<DIV class=searchDivHome>
+			<FORM id=form method=post action="/tel/search" onsubmit='return false'>
+				<INPUT id="q" placeholder="请输入姓名、号码、职位、单位、姓名拼音首字母" class=searchInputHome type=text name="q"> 
+				<!--<INPUT class=searchBUtton value="立即搜索" type=submit>-->
+			</FORM>
+		</DIV>
+	</DIV>
+	<DIV class=foot>
+	</DIV>
+</DIV>
+<div class="result">
+</div>
+<script type="text/javascript">
+ 	jQuery("#q").bind('input',function () {
+		if ($("#q").val().length>=2) {
+			var q=$("#q").val();
+			$(".result").html("<img src='/static/tel/images/loading.gif'> 正在查找。。。");
+			$(".result").load("/tel/search",{query:q});
+		}
+		});
+</script>
+</BODY>
+</html>

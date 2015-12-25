@@ -1,0 +1,59 @@
+<html>
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+	<title> 添加电话 </title> 
+	<link href="css.css" type=text/css rel=stylesheet>
+	<script language="javascript" src="/static/tel/js/jquery.js"></script>
+	<script language="javascript" src="/static/tel/js/autocompletejq.js"></script>
+	</head>
+<body>
+	<form action="/tel/doadd" id="form" name="form" method="post">
+		添加电话<br>
+		姓名:<input name="name" id="name" type="text"><br>
+		姓名拼音头字母:<input name="namepy" id="namepy" type="text"><br>
+		所属部门:<input name="depname" id="depname"  type="text"><br>
+		<div id="depnames"></div>
+		职位:<input name="job" id="job" type="text"><br>
+		办公电话:<input name="officetel" id="officetel" type="text"><br>
+		住宅电话:<input name="hometel" id="hometel" type="text"><br>
+		手机:<input name="celtel" id="celtel" type="text"><br>
+		<!--<div id="foodtypecontent"></div>-->
+		<br><input id="submit" type="submit" value="保存">
+		<div id="err"></div>
+	</form>
+	<script type="text/javascript">
+		$("#depname").change(function(){
+			var q=$("#depname").val();
+			$('#depnames').html("<img src='/static/tel/images/loading.gif'> 正在读取。。。");
+			$('#depnames').load("/tel/getdep",{query:q});
+			}
+		);
+		$(function() {
+			$("#submit").click(function() {
+				var errstr='';
+				if($("#name").val()=="" || $("#name").val()==null) {
+					errstr="<font color='red'>姓名不能为空！</font>";
+				 	$("#err").html(errstr);
+					return false;
+				}
+				if($("#namepy").val()=="" || $("#namepy").val()==null) {
+					errstr="<font color='red'>姓名拼音缩写不能为空！</font>";
+				 	$("#err").html(errstr);
+					return false;
+				}
+				if($("#depselect").val()=="" || $("#depselect").val()==null) {
+					errstr="<font color='red'>请选择所属部门！</font>";
+				 	$("#err").html(errstr);
+					return false;
+				}
+				if($("#officetel").val()=="" || $("#officetel").val()==null) {
+					errstr="<font color='red'>请输入办公电话！</font>";
+				 	$("#err").html(errstr);
+					return false;
+				}
+				return true;
+			});
+		});
+	</script>
+</body>
+</html>
