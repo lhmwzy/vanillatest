@@ -13,7 +13,7 @@ local function dodbquery(dbname,q)
                         host = "127.0.0.1",
                         port = "3306",
                         user = "root",
-                        password = "yjiawje",
+                        password = "yourpasswd",
 			database = dbname, 
 			max_packet_size=90485760
                         })

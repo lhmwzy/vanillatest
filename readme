@@ -1,0 +1,99 @@
+使用vanilla框架开发的一个搜索电话号码的小例子
+
+目录结构如下：
+├── application
+│   ├── bootstrap.lua
+│   ├── controllers
+│   │   ├── error.lua
+│   │   ├── hello.lua
+│   │   ├── http.lua
+│   │   ├── index.lua
+│   │   └── tel
+│   │       └── init.lua  #框架入口代码
+│   ├── library
+│   ├── models
+│   │   ├── dao
+│   │   │   └── table.lua
+│   │   └── service
+│   │       ├── tel.lua  #tel库,主要代码都在这
+│   │       └── user.lua
+│   ├── nginx
+│   │   ├── init
+│   │   │   ├── config.lua
+│   │   │   └── init.lua
+│   │   └── sh_dict.lua
+│   ├── plugins
+│   │   ├── admin.lua
+│   │   └── auth.lua  #身份验证文件
+│   └── views
+│       ├── error
+│       │   └── error.html
+│       ├── index
+│       │   ├── Hello.html
+│       │   └── index.html
+│       └── tel         #存在视图文件，
+│           ├── add.html #添加号码
+│           ├── index.html #首页
+│           └── mod.html #修改号码
+├── client_body_temp
+├── config
+│   ├── application.lua
+│   ├── errors.lua
+│   ├── nginx.conf  #nginx配置文件
+│   ├── nginx.lua
+│   ├── waf-regs
+│   │   ├── args
+│   │   ├── cookie
+│   │   ├── post
+│   │   ├── url
+│   │   ├── user-agent
+│   │   └── whiteurl
+│   └── waf.lua
+├── fastcgi_temp
+├── logs
+│   ├── development-access.log
+│   ├── development-error.log
+│   ├── error.log
+│   ├── hack
+│   ├── production-access.log
+│   └── production-error.log
+├── proxy_temp
+├── pub
+│   ├── index.lua
+│   └── static   #静态文件存放目录
+│       └── tel
+│           ├── css.css
+│           ├── images
+│           │   ├── bgBody.gif
+│           │   ├── bgPointBlue.gif
+│           │   ├── loading.gif
+│           │   └── shadow.png
+│           └── js
+│               ├── autocompletejq.js
+│               ├── input.js
+│               └── jquery.js
+├── scgi_temp
+├── spec
+│   ├── controllers
+│   │   └── index_controller_spec.lua
+│   ├── models
+│   └── spec_helper.lua
+├── tmp
+│   ├── production-nginx.conf
+│   └── production-nginx.pid
+├── sql
+    ├── person.sql  #存放电话号码的表
+│   └── department.sql #存在部门的表
+└── uwsgi_temp
+
+
+使用方法：
+1、安装vanilla,安装方法见https://github.com/idevz/vanilla/blob/master/README-zh.md
+2、在mysql中建立一个名为tel的表，将sql目录下的文件导入其中。
+3、将所有的文件放在一个目录中，在该目录下用vanilla start启动服务。
+4、通过 http://ip:端口/tel/ 来访问
+   http://ip:端口/tel/mod  是修改数据
+   http://ip:端口/tel/add  是添加数据
+
+5、代码很简陋和粗糙，仅做为vanilla入门示例，不当之处，请批评指正。
+
