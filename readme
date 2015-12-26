@@ -106,5 +106,7 @@
 5、通过 http://ip:端口/tel/ 来访问
    http://ip:端口/tel/mod  是修改数据
    http://ip:端口/tel/add  是添加数据
+   访问时，提示输入用户名和密码，在config/nginx.conf中的“if (ngx.var.user=="user" and ngx.var.passwd=="passwd") then” 来设置
+   
 6、代码很简陋和粗糙，仅做为vanilla入门示例，不当之处，请批评指正。
 
