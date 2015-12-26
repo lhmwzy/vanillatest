@@ -90,6 +90,9 @@
 2、在mysql中建立一个名为tel的表，将sql目录下的文件导入其中,其中department表，请在mysql中手动添加数据
 3、通过vanilla new 应用名称 #新建一个应用
    cd 应用名称 #进入到应用目录
+
+   把bootstrap.lua放在application目录下
+   
    mkdir application/controllers/tel #建立目录
    把init.lua放在该目录下
    把tel.lua放在application/models/service目录下
